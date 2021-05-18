@@ -1,0 +1,25 @@
+- name: build
+  service: updater
+  command: "echo built"
+
+- name: push_timestamp
+  service: updater
+  type: push
+  image_name: 369020531563.dkr.ecr.us-east-1.amazonaws.com/php7-apache-updater
+  image_tag: "{{.Timestamp}}"
+  registry: https://369020531563.dkr.ecr.us-east-1.amazonaws.com
+  dockercfg_service: aws_generator
+
+- name: push_latest
+  service: updater
+  type: push
+  image_name: 369020531563.dkr.ecr.us-east-1.amazonaws.com/php7-apache-updater
+  image_tag: "latest"
+  tag: main
+  registry: https://369020531563.dkr.ecr.us-east-1.amazonaws.com
+  dockercfg_service: aws_generator
+    
+- name: track_deployment
+  service: tracker
+  tag: main
+  command: "true"
