@@ -9,3 +9,8 @@ aws_generator:
     image: codeship/aws-ecr-dockercfg-generator
     encrypted_env_file: aws.env.encrypted
     add_docker: true
+
+tracker:
+  image: silintl/app-deployment-tracker-ga:latest
+  environment:
+    TRACKING_ID: UA-56269387-10
