@@ -24,4 +24,6 @@ echo sprintf(
     $majorVersionInUse
 );
 
-exit($isUsingLatestRelease ? 0 : 1);
+if (! $isUsingLatestRelease) {
+    exit(1);
+}
