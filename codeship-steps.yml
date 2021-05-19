@@ -21,6 +21,7 @@
 
 - name: update_lambda
   service: awscli
+  tag: main
   command: lambda update-function-code --function-name php7-apache-updater --image-uri 369020531563.dkr.ecr.us-east-1.amazonaws.com/php7-apache-updater:latest --publish
 
 - name: track_deployment
