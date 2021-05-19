@@ -10,6 +10,10 @@ aws_generator:
     encrypted_env_file: aws.env.encrypted
     add_docker: true
 
+awscli:
+  image: amazon/aws-cli:2.2.5
+  encrypted_env_file: aws.env.encrypted
+
 tracker:
   image: silintl/app-deployment-tracker-ga:latest
   environment:
