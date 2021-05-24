@@ -1,6 +1,6 @@
 - name: build
   service: updater
-  command: "echo built"
+  command: -c "echo built"
 
 - name: push_timestamp
   service: updater

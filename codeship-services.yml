@@ -3,7 +3,7 @@ updater:
     image: 369020531563.dkr.ecr.us-east-1.amazonaws.com/php7-apache-updater
     dockerfile_path: ./Dockerfile
     cached: true
-  command: return 0
+  entrypoint: /bin/sh
 
 aws_generator:
     image: codeship/aws-ecr-dockercfg-generator
