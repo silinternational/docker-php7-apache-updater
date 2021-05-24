@@ -9,21 +9,18 @@ const getPhpVersionInUse = () => {
 }
 
 const getLatestPhp7Release = async () => {
-  // TEMP
-  const releaseJson = fs.readFileSync('temp.json').toString()
-  const releaseData = JSON.parse(releaseJson)
-  // const response = await fetch(`https://www.php.net/releases/?json&version=7`, {
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'User-Agent': 'silintl/php7-apache-updater 0.1.0'
-  //   },
-  // })
-  // console.log('Response data', response.data)
-  // assert(
-  //   response.ok,
-  //   `Failed to retrieve latest PHP 7 release: \n${response.status} ${response.statusText}`
-  // )
-  // const releaseData = response.json()
+  const response = await fetch(`https://www.php.net/releases/?json&version=7`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'User-Agent': 'silintl/php7-apache-updater 0.1.0'
+    },
+  })
+  console.log('Response data', response.data)
+  assert(
+    response.ok,
+    `Failed to retrieve latest PHP 7 release: \n${response.status} ${response.statusText}`
+  )
+  const releaseData = response.json()
   return releaseData.version
 }
 
