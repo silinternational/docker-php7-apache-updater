@@ -1,7 +1,6 @@
 console.log('Loading function');
 
-const assert = require('assert')
-const fetch = require('node-fetch')
+const { execSync } = require('child_process')
 const fs = require('fs')
 
 const getPhpVersionInUse = () => {
@@ -9,18 +8,8 @@ const getPhpVersionInUse = () => {
 }
 
 const getLatestPhp7Release = async () => {
-  const response = await fetch(`https://www.php.net/releases/?json&version=7`, {
-    headers: {
-      'Content-Type': 'application/json',
-      'User-Agent': 'silintl/php7-apache-updater 0.1.0'
-    },
-  })
-  console.log('Response data', response.data)
-  assert(
-    response.ok,
-    `Failed to retrieve latest PHP 7 release: \n${response.status} ${response.statusText}`
-  )
-  const releaseData = response.json()
+  const json = execSync('curl https://www.php.net/releases/?json\\&version=7').toString()
+  const releaseData = JSON.parse(json)
   return releaseData.version
 }
 
