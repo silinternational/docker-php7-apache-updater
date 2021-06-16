@@ -1,4 +1,4 @@
-FROM silintl/php7-apache:7.4.19 as phpversion
+FROM silintl/php7-apache:7.4.20 as phpversion
 RUN php -r "echo phpversion();" > /tmp/phpversion.txt
 
 LABEL maintainer="matt_henderson@sil.org"
